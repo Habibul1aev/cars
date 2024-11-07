@@ -1,0 +1,35 @@
+{% extends "workspace/base.html" %} 
+{% block cards %}
+<p class='flex items-end justify-end mt-10 mr-20'>
+    <a href="{% url 'create' %}"><button class='btn2'>Create</button></a>
+</p>
+<div class="cards">
+  {% for item in cars %}
+  <div class="fon">
+    <div class="font">
+      <a href="{% url "delete" id=item.id %}">Delete</a>
+      <a href="{% url "update" id=item.id %}">Update</a>
+      <img src="{{ item.photo.url }}" class="card-img-top" alt="" />
+      <h1>{{item.name}}</h1>
+      <p class="ccn">{{cars.category.name}}</p>
+      <h4>Объем двигателя: {{item.volume}}</h4>
+
+      {% for teg in item.teg.all %}
+      <a href="#">{{teg.name}}</a>
+      {% endfor %}
+
+      <a href="{{item.link.name_link}}">{{item.link.name}}</a>
+
+      <h4>Просмотры {{item.views}}</h4>
+      <div class="btn">
+        <button class='btn2'>
+          <a href="{% url 'obzor' id=item.id %}" class="ash">Обзор</a>
+        </button>
+        <h2>Цена: {{item.price}} р</h2>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock cards %} 
+

@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static "css.css" %}">
+  </head>
+  <body>
+    {% include "components/nav.html" %}
+
+    <div class="container">
+
+      <div class="block">
+
+        {% comment %} <label for="categories">Категория:</label> {% endcomment %}
+        {% comment %} <select id="categories" name="search">
+          <option value="{% url 'main' %}?category=''">Все</option>
+          {% for marka in category_list %}
+            <option ="{% url 'main' %}?category={{marka.id}}">{{marka.name_category}}</option>
+          {% endfor %}
+        </select> {% endcomment %}
+        <a href="{% url 'main' %}">Home</a>
+        {% for marka in category_list %}
+            <a href="{% url 'main' %}?category={{marka.id}}">{{marka.name_category}}</a>
+        {% endfor %}
+        <a href="{% url 'workspace' %}">Workspace</a>
+      </div>
+
+      <div class="cards">
+        {% for item in cars %}
+        <div class="fon">
+          <div class="font">
+            <img src="{{ item.photo.url }}" class="card-img-top" alt="..." />
+            <h1>{{item.name}}</h1>
+            <p class="ccn">{{cars.category.name}}</p>
+            <h4>Объем двигателя: {{item.volume}}</h4>
+
+            {% for teg in item.teg.all %}
+              <a href="#">{{teg.name}}</a>
+            {% endfor %}
+
+              <a href="{{item.link.name_link}}">{{item.link.name}}</a>
+            
+              <h4>Просмотры {{item.views}}</h4>
+            <div class="btn">
+              <button class='btn2'>
+                <a href="{% url 'obzor' id=item.id %}" class="ash">Обзор</a>
+              </button>
+              <h2>Цена: {{item.price}} р</h2>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

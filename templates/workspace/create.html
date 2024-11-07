@@ -1,0 +1,105 @@
+{% extends "workspace/base.html" %} 
+
+{% block create %}
+
+<form action="{% url 'create' %}" method='POST' enctype='multipart/form-data' class='flex align-center justify-center mt-10'>
+    {% csrf_token %}
+    <div>
+            <div class="mb-4">
+                <label for="id_name">{{ form.name.label }}</label>
+                {{ form.name }}
+                <div class="text-danger">
+                    {% for error in form.name.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_photo">{{ form.photo.label }}</label>
+                {{ form.photo }}
+                <div class="text-danger">
+                    {% for error in form.photo.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="mb-4">
+                <label for="id_volume">{{ form.volume.label }}</label>
+                {{ form.volume }}
+                <div class="text-danger">
+                    {% for error in form.volume.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_model">{{ form.model.label }}</label>
+                {{ form.model }}
+                <div class="text-danger">
+                    {% for error in form.model.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_info">{{ form.info.label }}</label>
+                {{ form.info }}
+                <div class="text-danger">
+                    {% for error in form.info.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_price">{{ form.price.label }}</label>
+                {{ form.price }}
+                <div class="text-danger">
+                    {% for error in form.price.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_category">{{ form.category.label }}</label>
+                {{ form.category }}
+                <div class="text-danger">
+                    {% for error in form.category.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_teg">{{ form.teg.label }}</label>
+                {{ form.teg }}
+                <div class="text-danger">
+                    {% for error in form.teg.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="id_is_publish">{{ form.is_publish.label }}</label>
+                {{ form.is_publish }}
+                <div class="text-danger">
+                    {% for error in form.is_publish.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        <button class='w-[450px] h-[50px] rounded-[5px] text-[22px] text-white bg-green-900 mt-2' type='submit'>Отправить</button>
+    </div>
+</form>
+
+
+
+{% endblock create %}
